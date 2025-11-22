@@ -1,0 +1,113 @@
+.header {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--light-color);
+}
+
+.logo span {
+  color: var(--secondary-color);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu li {
+  margin-left: 20px;
+}
+
+.nav-menu a {
+  color: var(--light-color);
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--secondary-color);
+  transition: var(--transition);
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.welcome-user {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: var(--light-color);
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 8px 15px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.mobile-menu-btn {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    background-color: var(--primary-color);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transition: var(--transition);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-menu li {
+    margin: 15px 0;
+  }
+}
