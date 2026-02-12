@@ -1,5 +1,4 @@
 # Open Road Rentals - React Application
-Live--https://open-road-rentals-nta9.vercel.app/
 
 A modern React-based vehicle rental application for hill station adventures, converted from the original HTML/CSS/JavaScript implementation.
 
