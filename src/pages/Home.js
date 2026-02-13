@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import VehicleCard from '../components/VehicleCard';
 import { vehicleData, locations, hillStations } from '../utils/vehicleData';
 import './Home.css';
@@ -14,7 +13,7 @@ const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const [showFiltered, setShowFiltered] = useState(false);
-  const navigate = useNavigate();
+
 
   const today = new Date();
   const minDate = today.toISOString().split('T')[0];
