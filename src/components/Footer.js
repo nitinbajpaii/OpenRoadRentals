@@ -7,17 +7,24 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
+          
+          {/* Column 1 */}
           <div className="footer-column">
             <h3>Open Road Rentals</h3>
-            <p>Your trusted partner for hill station adventures. We provide quality vehicles for a memorable journey.</p>
+            <p>
+              Your trusted partner for hill station adventures. 
+              We provide quality vehicles for a memorable journey.
+            </p>
+
             <div className="social-links">
-              <a href="#" aria-label="Facebook">FB</a>
-              <a href="#" aria-label="Instagram">IG</a>
-              <a href="#" aria-label="Twitter">TW</a>
-              <a href="#" aria-label="YouTube">YT</a>
+              <button type="button" aria-label="Facebook">FB</button>
+              <button type="button" aria-label="Instagram">IG</button>
+              <button type="button" aria-label="Twitter">TW</button>
+              <button type="button" aria-label="YouTube">YT</button>
             </div>
           </div>
-          
+
+          {/* Column 2 */}
           <div className="footer-column">
             <h3>Quick Links</h3>
             <ul>
@@ -27,7 +34,8 @@ const Footer = () => {
               <li><Link to="/contact">Contact Us</Link></li>
             </ul>
           </div>
-          
+
+          {/* Column 3 */}
           <div className="footer-column">
             <h3>Our Locations</h3>
             <ul>
@@ -38,7 +46,8 @@ const Footer = () => {
               <li>Munnar</li>
             </ul>
           </div>
-          
+
+          {/* Column 4 */}
           <div className="footer-column">
             <h3>Contact Info</h3>
             <ul>
@@ -47,11 +56,13 @@ const Footer = () => {
               <li>Address: Chitkara University, Punjab</li>
             </ul>
           </div>
+
         </div>
-        
+
         <div className="footer-bottom">
           <p>&copy; 2025 Open Road Rentals. All rights reserved.</p>
         </div>
+
       </div>
     </footer>
   );
