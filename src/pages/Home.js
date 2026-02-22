@@ -14,6 +14,10 @@ const Home = () => {
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const [showFiltered, setShowFiltered] = useState(false);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69d399b5e79992cad31916f8bde552b2143ff156
   const today = new Date();
   const minDate = today.toISOString().split('T')[0];
 

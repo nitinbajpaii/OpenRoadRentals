@@ -152,3 +152,4 @@ The React frontend is designed to work with your existing backend APIs. To integ
 ## License
 
 This project is licensed under the MIT License.
+

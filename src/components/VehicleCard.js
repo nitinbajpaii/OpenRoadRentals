@@ -50,4 +50,8 @@ const VehicleCard = ({ vehicle, isSelectable = false, isSelected = false, onSele
   );
 };
 
+<<<<<<< HEAD
 export default VehicleCard;
+=======
+export default VehicleCard;
+>>>>>>> 69d399b5e79992cad31916f8bde552b2143ff156

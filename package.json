@@ -6,7 +6,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
+<<<<<<< HEAD
     "react-scripts": "5.0.1"
+=======
+    "react-scripts": "^5.0.1"
+>>>>>>> 69d399b5e79992cad31916f8bde552b2143ff156
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,4 +36,8 @@
       "last 1 safari version"
     ]
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 69d399b5e79992cad31916f8bde552b2143ff156
