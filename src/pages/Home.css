@@ -1,13 +1,13 @@
 /* HERO SECTION */
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
 
   background: linear-gradient(
       rgba(10, 36, 99, 0.7),
       rgba(10, 36, 99, 0.7)
     ),
-    url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1350&q=80');
 
   background-size: cover;
   background-position: center;
@@ -19,7 +19,8 @@
   text-align: center;
   color: var(--light-color);
 
-  margin-top: 70px;
+  margin-top: 0;   /* ✅ FIXED */
+  padding-top: 80px; /* optional if header fixed */
 }
 
 
