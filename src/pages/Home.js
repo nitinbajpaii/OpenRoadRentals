@@ -19,6 +19,8 @@ const Home = () => {
   const today = new Date();
   const minDate = today.toISOString().split('T')[0];
 
+
+  // INPUT CHANGE
   const handleInputChange = (e) => {
 
     setSearchForm({
@@ -28,6 +30,8 @@ const Home = () => {
 
   };
 
+
+  // SEARCH BUTTON CLICK
   const handleSearchSubmit = (e) => {
 
     e.preventDefault();
@@ -39,29 +43,62 @@ const Home = () => {
       return;
     }
 
+    const pickup = new Date(pickupDate);
+    const returnD = new Date(returnDate);
+
+    today.setHours(0,0,0,0);
+
+    if (returnD < pickup) {
+      alert('Return date cannot be before pickup date');
+      return;
+    }
+
+
+    // SAVE DATA
+    localStorage.setItem(
+      'homeSearchData',
+      JSON.stringify(searchForm)
+    );
+
+
+    // FILTER VEHICLES
     const vehiclesToFilter =
       vehicleType === 'car'
         ? vehicleData.cars
         : vehicleData.bikes;
 
+
     setFilteredVehicles(vehiclesToFilter);
 
     setShowFiltered(true);
 
+
+    // SHOW POPUP
     setShowPopup(true);
 
-    setTimeout(() => setShowPopup(false), 2000);
+    setTimeout(() => {
+
+      setShowPopup(false);
+
+      document
+        .getElementById('filtered-results')
+        ?.scrollIntoView({ behavior: 'smooth' });
+
+    }, 1500);
 
   };
 
+
   const featuredVehicles = [
-    ...vehicleData.cars.slice(0, 2),
-    ...vehicleData.bikes.slice(0, 2)
+    ...vehicleData.cars.slice(0,2),
+    ...vehicleData.bikes.slice(0,2)
   ];
+
 
   return (
 
     <div className="home">
+
 
       {/* HERO */}
       <section className="hero">
@@ -75,7 +112,6 @@ const Home = () => {
           </p>
 
 
-          {/* SEARCH CARD */}
           <div className="search-bar">
 
             <form
@@ -83,7 +119,7 @@ const Home = () => {
               onSubmit={handleSearchSubmit}
             >
 
-              {/* VEHICLE TYPE */}
+
               <div className="search-group">
 
                 <label>Vehicle Type</label>
@@ -92,12 +128,11 @@ const Home = () => {
                   name="vehicleType"
                   value={searchForm.vehicleType}
                   onChange={handleInputChange}
+                  required
                 >
 
                   <option value="">Select Vehicle Type</option>
-
                   <option value="car">Car</option>
-
                   <option value="bike">Bike</option>
 
                 </select>
@@ -105,7 +140,7 @@ const Home = () => {
               </div>
 
 
-              {/* PICKUP DATE */}
+
               <div className="search-group">
 
                 <label>Pickup Date</label>
@@ -116,12 +151,13 @@ const Home = () => {
                   value={searchForm.pickupDate}
                   onChange={handleInputChange}
                   min={minDate}
+                  required
                 />
 
               </div>
 
 
-              {/* RETURN DATE */}
+
               <div className="search-group">
 
                 <label>Return Date</label>
@@ -132,12 +168,13 @@ const Home = () => {
                   value={searchForm.returnDate}
                   onChange={handleInputChange}
                   min={searchForm.pickupDate || minDate}
+                  required
                 />
 
               </div>
 
 
-              {/* LOCATION */}
+
               <div className="search-group">
 
                 <label>Location</label>
@@ -146,6 +183,7 @@ const Home = () => {
                   name="location"
                   value={searchForm.location}
                   onChange={handleInputChange}
+                  required
                 >
 
                   <option value="">Select Location</option>
@@ -163,7 +201,7 @@ const Home = () => {
               </div>
 
 
-              {/* BUTTON */}
+
               <button
                 type="submit"
                 className="search-btn"
@@ -179,6 +217,42 @@ const Home = () => {
         </div>
 
       </section>
+
+
+
+      {/* FILTERED RESULTS */}
+      {showFiltered && (
+
+        <section
+          id="filtered-results"
+          className="filtered-results"
+        >
+
+          <div className="container">
+
+            <h2 className="section-title">
+              Search Results
+            </h2>
+
+            <div className="vehicle-grid">
+
+              {filteredVehicles.map(vehicle => (
+
+                <VehicleCard
+                  key={vehicle.id}
+                  vehicle={vehicle}
+                />
+
+              ))}
+
+            </div>
+
+          </div>
+
+        </section>
+
+      )}
+
 
 
       {/* FEATURED */}
@@ -208,36 +282,6 @@ const Home = () => {
       </section>
 
 
-      {/* FILTERED */}
-      {showFiltered && (
-
-        <section className="filtered-results">
-
-          <div className="container">
-
-            <h2 className="section-title">
-              Search Results
-            </h2>
-
-            <div className="vehicle-grid">
-
-              {filteredVehicles.map(vehicle => (
-
-                <VehicleCard
-                  key={vehicle.id}
-                  vehicle={vehicle}
-                />
-
-              ))}
-
-            </div>
-
-          </div>
-
-        </section>
-
-      )}
-
 
       {/* POPUP */}
       {showPopup && (
@@ -246,7 +290,11 @@ const Home = () => {
 
           <div className="popup-content">
 
-            Search Complete!
+            <h3>Search Complete!</h3>
+
+            <p>
+              Found {filteredVehicles.length} vehicles
+            </p>
 
           </div>
 
