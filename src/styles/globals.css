@@ -105,3 +105,23 @@ img {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+/* FIX FOR VERCEL LAYOUT ISSUE */
+
+html, body, #root {
+  height: 100%;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.home {
+  min-height: 70vh;
+  padding: 20px 0;
+}
