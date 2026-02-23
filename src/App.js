@@ -1,3 +1,4 @@
+import ScrollToTop from "./utils/ScrollToTop";
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -19,39 +20,37 @@ import './styles/globals.css';
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
+  <Router>
 
-          {/* Header */}
-          <Header />
+    <ScrollToTop />
 
-          {/* Main Content FIX */}
-          <main>
-            <Routes>
+    <div className="App">
 
-              <Route path="/" element={<Home />} />
+      <Header />
 
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
+      <Routes>
 
-              <Route path="/booking" element={<Booking />} />
-              <Route path="/confirmation" element={<Confirmation />} />
+        <Route path="/" element={<Home />} />
 
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
-              {/* fallback */}
-              <Route path="*" element={<Home />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/confirmation" element={<Confirmation />} />
 
-            </Routes>
-          </main>
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
 
-          {/* Footer */}
-          <Footer />
+        <Route path="*" element={<Home />} />
 
-        </div>
-      </Router>
-    </AuthProvider>
+      </Routes>
+
+      <Footer />
+
+    </div>
+
+  </Router>
+</AuthProvider>
   );
 }
 
